@@ -6,7 +6,7 @@
 /*   By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:53:13 by dholiday          #+#    #+#             */
-/*   Updated: 2020/03/10 15:25:33 by dholiday         ###   ########.fr       */
+/*   Updated: 2020/03/10 16:19:58 by dholiday         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,9 +41,13 @@ void	ft_init_fractol(t_all *all)
 void	ft_init_cook(t_all *all)
 {
 	all->min = init_complex(-2.0, -2.0);
-	all->max.re = 2.0;
-	all->max.im = all->min.im + (all->max.re - all->min.re) * HEIGHT / WIDTH;
+	// all->max.re = 2.0;
+	// all->max.im = 2.0; //all->min.im + (all->max.re - all->min.re) * HEIGHT / WIDTH;
+	all->max = init_complex(2.0, 2.0);
+	// all->factor = init_complex(
+	// 	(all->max.re - all->min.re) / (WIDTH - 1),
+	// 	(all->max.im - all->min.im) / (HEIGHT - 1));
 	all->factor = init_complex(
-		(all->max.re - all->min.re) / (WIDTH - 1),
-		(all->max.im - all->min.im) / (HEIGHT - 1));
+		(all->max.re - all->min.re) / (WIDTH),
+		(all->max.im - all->min.im) / (HEIGHT));
 }
