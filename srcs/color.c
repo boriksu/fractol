@@ -6,7 +6,7 @@
 /*   By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:53:13 by dholiday          #+#    #+#             */
-/*   Updated: 2020/03/10 21:04:09 by dholiday         ###   ########.fr       */
+/*   Updated: 2020/03/10 21:07:44 by dholiday         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ void	color(int iteration, int x, int y, t_all *all)
 	t = (double)iteration / (double)MAX_ITERATION;  //depth of color
 
 	// синий внешний, чем глубже, красный синий
-	// red = (int)(9 * (1 - t) * pow(t, 3) * 255);
-	// green = (int)(15 * pow((1 - t), 2) * pow(t, 2) * 255);
-	// blue = (int)(8.5 * pow((1 - t), 3) * t * 255);
-	// i = (x * all->image->bits_per_pixel / 8) + (y * all->image->size_line);
-	// record_color(all, i, red, green, blue);
+	red = (int)(9 * (1 - t) * pow(t, 3) * 255);
+	green = (int)(15 * pow((1 - t), 2) * pow(t, 2) * 255);
+	blue = (int)(8.5 * pow((1 - t), 3) * t * 255);
+	i = (x * all->image->bits_per_pixel / 8) + (y * all->image->size_line);
+	record_color(all, i, red, green, blue);
 
 	// красный внешний, чем глубже, чем синий
 	// red = (int)(8.5 * pow((1 - t), 3) * t * 255);
@@ -44,11 +44,11 @@ void	color(int iteration, int x, int y, t_all *all)
 	// i = (x * all->image->bits_per_pixel / 8) + (y * all->image->size_line);
 	// record_color(all, i, red, green, blue);
 
-	red = (int)(255 - 9 * (1 - t) * pow(t, 3) * 255);
-	green = (int)(255 - 15 * pow((1 - t), 2) * pow(t, 2) * 255);
-	blue = (int)(255 - 8.5 * pow((1 - t), 3) * t * 255);
-	i = (x * all->image->bits_per_pixel / 8) + (y * all->image->size_line);
-	record_color(all, i, red, green, blue);
+	// red = (int)(255 - 9 * (1 - t) * pow(t, 3) * 255);
+	// green = (int)(255 - 15 * pow((1 - t), 2) * pow(t, 2) * 255);
+	// blue = (int)(255 - 8.5 * pow((1 - t), 3) * t * 255);
+	// i = (x * all->image->bits_per_pixel / 8) + (y * all->image->size_line);
+	// record_color(all, i, red, green, blue);
 
 
 }
