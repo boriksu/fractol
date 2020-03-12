@@ -6,7 +6,7 @@
 /*   By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:53:13 by dholiday          #+#    #+#             */
-/*   Updated: 2020/03/10 17:07:46 by dholiday         ###   ########.fr       */
+/*   Updated: 2020/03/11 21:21:43 by dholiday         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "libft/libft.h"
 # include <fcntl.h>
 # include <math.h>
+# include <pthread.h>
 
 # define ANSI_COLOR_RED     "\x1b[31m"
 # define ANSI_COLOR_GREEN   "\x1b[32m"
@@ -55,11 +56,16 @@ typedef struct	s_all
 	char		*map[NUMBER];
 	int			move;
 	int			num;
+	double		zoom;
+	int			w;
+	int			h;
 	t_complex	k;
 	t_complex	min;
 	t_complex	max;
 	t_complex	factor;
 	t_ptr		*image;
+	pthread_t	tid; /* идентификатор потока */
+  	pthread_attr_t	attr; /* отрибуты потока */
 	int			(*frac[NUMBER])(t_complex *z, t_complex c, t_complex *k);
 }				t_all;
 
@@ -77,7 +83,7 @@ int		deal_key(int key, void *param);
 int		mouse_move(int x, int y, void *param);
 
 t_complex init_complex(double re, double im);
-void	ft_cook(t_all *all);
+void		*ft_cook(void *param);
 
 int		mandelbrot(t_complex *z, t_complex c, t_complex *k);
 int		julia(t_complex *z, t_complex c, t_complex *k);

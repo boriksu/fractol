@@ -6,7 +6,7 @@
 /*   By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:53:13 by dholiday          #+#    #+#             */
-/*   Updated: 2020/03/10 16:19:58 by dholiday         ###   ########.fr       */
+/*   Updated: 2020/03/11 21:21:51 by dholiday         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,16 @@ void	ft_init_fractol(t_all *all)
 	all->map[2] = ft_strdup("Buffalo");
 	all->image = NULL;
 	all->move = 0;
+	all->zoom = 1.0;
+	all->w = WIDTH;
+	all->h = HEIGHT;
 	all->k = init_complex(0.5, 0.6);
 	all->frac[0] = &mandelbrot;
 	all->frac[1] = &julia;
 	all->frac[2] = &buffalo;
+	/* получаем дефолтные значения атрибутов */
+	pthread_attr_init(&all->attr);
+
 }
 
 void	ft_init_cook(t_all *all)
@@ -48,6 +54,6 @@ void	ft_init_cook(t_all *all)
 	// 	(all->max.re - all->min.re) / (WIDTH - 1),
 	// 	(all->max.im - all->min.im) / (HEIGHT - 1));
 	all->factor = init_complex(
-		(all->max.re - all->min.re) / (WIDTH),
-		(all->max.im - all->min.im) / (HEIGHT));
+		(all->max.re - all->min.re) / (all->zoom * all->w),
+		(all->max.im - all->min.im) / (all->zoom * all->h));
 }
