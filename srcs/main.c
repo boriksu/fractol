@@ -6,7 +6,7 @@
 /*   By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:53:13 by dholiday          #+#    #+#             */
-/*   Updated: 2020/03/11 21:39:46 by dholiday         ###   ########.fr       */
+/*   Updated: 2020/03/13 14:21:12 by dholiday         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	understand(t_all *all, char **argv)
 	ft_putstr(ANSI_COLOR_YELLOW "Good choice!\n" ANSI_COLOR_RESET);
 	ft_init(all);
 	ft_bzero(all->image->data_addr, WIDTH * 4 * HEIGHT);  //для отрисовки
-	pthread_create(&all->tid,&all->attr, ft_cook, all);
-	pthread_join(all->tid,NULL);
-	//ft_cook(all);
+	// pthread_create(&all->tid,&all->attr, ft_cook, all);
+	// pthread_join(all->tid,NULL);
+	ft_cook(all);
 }

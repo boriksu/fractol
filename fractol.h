@@ -6,7 +6,7 @@
 /*   By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:53:13 by dholiday          #+#    #+#             */
-/*   Updated: 2020/03/11 21:21:43 by dholiday         ###   ########.fr       */
+/*   Updated: 2020/03/13 14:21:07 by dholiday         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ int		deal_key(int key, void *param);
 int		mouse_move(int x, int y, void *param);
 
 t_complex init_complex(double re, double im);
-void		*ft_cook(void *param);
+void		ft_cook(void *param);
 
 int		mandelbrot(t_complex *z, t_complex c, t_complex *k);
 int		julia(t_complex *z, t_complex c, t_complex *k);

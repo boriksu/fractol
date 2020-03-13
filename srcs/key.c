@@ -6,7 +6,7 @@
 /*   By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:53:13 by dholiday          #+#    #+#             */
-/*   Updated: 2020/03/11 21:40:02 by dholiday         ###   ########.fr       */
+/*   Updated: 2020/03/13 14:21:59 by dholiday         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,14 @@ int		deal_key(int key, void *param)
 		all->zoom += 0.2;
 		// printf("%f\n", all->zoom);
 	}
+	else
+		return (0);
 	//scale_keys(all, key);
 	mlx_clear_window(all->image->mlx_ptr, all->image->win_ptr);
-	// ft_cook(all);
-	pthread_create(&all->tid,&all->attr,ft_cook, all);
-	pthread_join(all->tid,NULL);
+	ft_bzero(all->image->data_addr, WIDTH * 4 * HEIGHT);  //для отрисовки
+	ft_cook(all);
+	// pthread_create(&all->tid,&all->attr,ft_cook, all);
+	// pthread_join(all->tid,NULL);
 	// else if (key == 96)
 	// 	ft_default(all->fdf);
 	// else if (key == 51)
