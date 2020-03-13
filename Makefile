@@ -6,7 +6,7 @@
 #    By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/13 14:06:41 by dholiday          #+#    #+#              #
-#    Updated: 2020/03/11 21:41:01 by dholiday         ###   ########.fr        #
+#    Updated: 2020/03/13 14:39:22 by dholiday         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ all: $(NAME)
 
 $(NAME) :  $(MLX) $(OBJ) $(LIBFT)
 	@echo "$(PURPLE)creating $(FDF)$(RESET)"
-	@gcc  -o progtest -std=c99 -lpthread $(FLAGS) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
+	@gcc $(FLAGS) $(CFLAGS) $(OBJ) $(LIBFT) -o $(NAME)
 
 $(OBJ) : ./fractol.h
 

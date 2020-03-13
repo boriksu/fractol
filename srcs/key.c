@@ -6,7 +6,7 @@
 /*   By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:53:13 by dholiday          #+#    #+#             */
-/*   Updated: 2020/03/13 14:21:59 by dholiday         ###   ########.fr       */
+/*   Updated: 2020/03/13 15:41:43 by dholiday         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ int		deal_key(int key, void *param)
 	else if (key == 49)
 	{
 		all->zoom += 0.2;
+		all->x_mouse = (all->zoom * all->w ) / 2;
+		all->y_mouse = (all->zoom * all->h ) / 2;
 		// printf("%f\n", all->zoom);
 	}
 	else
