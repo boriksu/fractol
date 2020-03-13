@@ -6,7 +6,7 @@
 /*   By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:53:13 by dholiday          #+#    #+#             */
-/*   Updated: 2020/03/13 15:55:14 by dholiday         ###   ########.fr       */
+/*   Updated: 2020/03/13 19:26:18 by dholiday         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,19 @@ int		mouse_press(int button, int x, int y, void *param)
 	if (button == 5)
 	{
 		all->zoom += 0.2;
-		all->x_mouse = x;
-		all->y_mouse = y;
-		printf("x = %d | y = %d\n", x, y);
+		all->bias_x = (all->zoom * all->w - WIDTH) / 2;
+		all->bias_y = (all->zoom * all->h - HEIGHT) / 2;
 	}
-	if (button == 4)
+	else if (button == 4)
 	{
-		printf("zoom");
+		if (all->zoom > 0.15)
+			all->zoom -= 0.1;
+		all->bias_x = (all->zoom * all->w - WIDTH) / 2;
+		all->bias_y = (all->zoom * all->h - HEIGHT) / 2;
+		// printf("%f\n", all->zoom);
 	}
+	else
+		return (0);
 	mlx_clear_window(all->image->mlx_ptr, all->image->win_ptr);
 	ft_bzero(all->image->data_addr, WIDTH * 4 * HEIGHT);  //для отрисовки
 	ft_cook(all);

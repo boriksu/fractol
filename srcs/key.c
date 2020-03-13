@@ -6,7 +6,7 @@
 /*   By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:53:13 by dholiday          #+#    #+#             */
-/*   Updated: 2020/03/13 15:41:43 by dholiday         ###   ########.fr       */
+/*   Updated: 2020/03/13 19:30:04 by dholiday         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ int		deal_key(int key, void *param)
 
 	// alpha = 0.0174533 * 3;
 	all = (t_all*)param;
+
+	// printf("%d\n", key);
 	if (key == 53)
 	{
 		ft_clean(all);
@@ -27,10 +29,14 @@ int		deal_key(int key, void *param)
 	else if (key == 49)
 	{
 		all->zoom += 0.2;
-		all->x_mouse = (all->zoom * all->w ) / 2;
-		all->y_mouse = (all->zoom * all->h ) / 2;
+		// all->x_mouse = (all->w ) / 2;
+		// all->y_mouse = (all->h ) / 2;
 		// printf("%f\n", all->zoom);
 	}
+	else if (key == 126)
+		all->bias_y += 10;
+	else if (key == 125)
+		all->bias_y -= 10;
 	else
 		return (0);
 	//scale_keys(all, key);

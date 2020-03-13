@@ -6,7 +6,7 @@
 /*   By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:53:13 by dholiday          #+#    #+#             */
-/*   Updated: 2020/03/13 15:59:43 by dholiday         ###   ########.fr       */
+/*   Updated: 2020/03/13 19:23:39 by dholiday         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ typedef struct	s_all
 	double		zoom;
 	int			w;
 	int			h;
-	int			x_mouse;
-	int			y_mouse;
+	int			bias_x;
+	int			bias_y;
 	t_complex	k;
 	t_complex	min;
 	t_complex	max;
@@ -76,9 +76,9 @@ typedef struct	s_test
 {
 	int y;
 	int ye;
+	int x;
+	int iteration;
 	t_all *all;
-	float bias_x;
-	float bias_y;
 }				t_test;
 
 void	ft_init(t_all *all);
@@ -96,7 +96,7 @@ int		mouse_move(int x, int y, void *param);
 int		mouse_press(int button, int x, int y, void *param);
 
 t_complex init_complex(double re, double im);
-void		ft_cook(void *param);
+void		ft_cook(t_all *all);
 
 int		mandelbrot(t_complex *z, t_complex c, t_complex *k);
 int		julia(t_complex *z, t_complex c, t_complex *k);

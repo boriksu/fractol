@@ -6,7 +6,7 @@
 /*   By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:53:13 by dholiday          #+#    #+#             */
-/*   Updated: 2020/03/13 16:10:51 by dholiday         ###   ########.fr       */
+/*   Updated: 2020/03/13 19:08:48 by dholiday         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ void	ft_init_fractol(t_all *all)
 	all->zoom = 1.0;
 	all->w = WIDTH;
 	all->h = HEIGHT;
-	all->x_mouse = 0;
-	all->y_mouse = 0;
+	// all->x_mouse = (all->zoom * all->w ) / 2;
+	// all->y_mouse = (all->zoom * all->h ) / 2;
 		// printf("b _x = %f | b _y = %f\n\n", all->x_mouse, all->y_mouse);
 	all->k = init_complex(0.5, 0.6);
 	all->frac[0] = &mandelbrot;
