@@ -6,7 +6,7 @@
 /*   By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:53:13 by dholiday          #+#    #+#             */
-/*   Updated: 2020/03/13 19:30:04 by dholiday         ###   ########.fr       */
+/*   Updated: 2020/03/14 19:14:53 by dholiday         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,63 +15,46 @@
 int		deal_key(int key, void *param)
 {
 	t_all	*all;
-	// double	alpha;
 
-	// alpha = 0.0174533 * 3;
 	all = (t_all*)param;
-
-	// printf("%d\n", key);
-	if (key == 53)
+	if (key == EXIT)
 	{
 		ft_clean(all);
 		exit(0);
 	}
-	else if (key == 49)
+	else if (key == ZOOM)
 	{
 		all->zoom += 0.2;
-		// all->x_mouse = (all->w ) / 2;
-		// all->y_mouse = (all->h ) / 2;
-		// printf("%f\n", all->zoom);
+		all->bias_x = (all->zoom * all->w - WIDTH) / 2;
+		all->bias_y = (all->zoom * all->h - HEIGHT) / 2;
 	}
-	else if (key == 126)
-		all->bias_y += 10;
-	else if (key == 125)
-		all->bias_y -= 10;
-	else
+	else if (key == INITIAL)
+	{
+		all->zoom = 1.0;
+		all->bias_y = 0;
+		all->bias_x = 0;
+	}
+	else if (key_move(key, all) == 0)
 		return (0);
-	//scale_keys(all, key);
-	mlx_clear_window(all->image->mlx_ptr, all->image->win_ptr);
-	ft_bzero(all->image->data_addr, WIDTH * 4 * HEIGHT);  //для отрисовки
 	ft_cook(all);
-	// pthread_create(&all->tid,&all->attr,ft_cook, all);
-	// pthread_join(all->tid,NULL);
-	// else if (key == 96)
-	// 	ft_default(all->fdf);
-	// else if (key == 51)
-	// {
-	// 	mlx_clear_window(all->im->mlx_ptr, all->im->win_ptr);
-	// 	ft_put_text(all->im, all->fdf);
-	// 	return (0);
-	// }
-	// else if (key == 36)
-	// {
-	// 	ft_default(all->fdf);
-	// 	ft_bias(all->fdf);
-	// }
-	// rotate_keys(all, alpha, key);
-	// scale_keys(all, key);
-	// mlx_clear_window(all->im->mlx_ptr, all->im->win_ptr);
-	// ft_show(all->im, all->fdf, all->fdf->rotate_x);
-	// if (key == 42)
-	// 	ft_surprise(all);
 	return (0);
 }
 
-void	scale_keys(t_all *all, int key)
+int		key_move(int key, t_all *all)
 {
-	// if (key == 69)
-	// {
-	// 	all->fdf->scale += all->fdf->scale_default / 4.0;
-	// 	all->fdf->scale_z += all->fdf->scale_default / 4.0;
-	// }
+	if (key == UP)
+		all->bias_y += 50;
+	else if (key == DOWN)
+		all->bias_y -= 50;
+	else if (key == LEFT)
+		all->bias_x += 50;
+	else if (key == RIGHT)
+		all->bias_x -= 50;
+	else if (key == COLOR && all->color > 0)
+		all->color++;
+	else if (key == SUN)
+		all->color *= -1;
+	else
+		return (0);
+	return (1);
 }

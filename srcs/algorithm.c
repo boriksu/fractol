@@ -6,7 +6,7 @@
 /*   By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:53:13 by dholiday          #+#    #+#             */
-/*   Updated: 2020/03/10 15:23:42 by dholiday         ###   ########.fr       */
+/*   Updated: 2020/03/14 19:07:03 by dholiday         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		mandelbrot(t_complex *z, t_complex c, t_complex *k)
 {
 	int iteration;
-	
+
 	iteration = 0;
 	while (pow(z->re, 2.0) + pow(z->im, 2.0) <= 4 && iteration < MAX_ITERATION)
 	{
@@ -27,7 +27,6 @@ int		mandelbrot(t_complex *z, t_complex c, t_complex *k)
 	return (iteration);
 }
 
-
 int		julia(t_complex *z, t_complex c, t_complex *k)
 {
 	int iteration;
@@ -35,7 +34,8 @@ int		julia(t_complex *z, t_complex c, t_complex *k)
 	iteration = 0;
 	while (pow(z->re, 2.0) + pow(z->im, 2.0) <= 4 && iteration < MAX_ITERATION)
 	{
-		*z = init_complex(pow(z->re, 2.0) - pow(z->im, 2.0) + k->re, 2.0 * z->re * z->im + k->im);
+		*z = init_complex(pow(z->re, 2.0) - pow(z->im, 2.0) +
+							k->re, 2.0 * z->re * z->im + k->im);
 		iteration++;
 	}
 	return (iteration);
@@ -46,7 +46,7 @@ int		buffalo(t_complex *z, t_complex c, t_complex *k)
 	int iteration;
 
 	iteration = 0;
-	while (pow(z->re, 2.0) + pow(z->im, 2.0) <= 4	&& iteration < MAX_ITERATION)
+	while (pow(z->re, 2.0) + pow(z->im, 2.0) <= 4 && iteration < MAX_ITERATION)
 	{
 		*z = init_complex(
 			fabs(pow(z->re, 2.0) - pow(z->im, 2.0)) + c.re,

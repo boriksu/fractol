@@ -6,7 +6,7 @@
 #    By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/08/13 14:06:41 by dholiday          #+#    #+#              #
-#    Updated: 2020/03/13 14:39:22 by dholiday         ###   ########.fr        #
+#    Updated: 2020/03/14 20:07:07 by dholiday         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ FLAGS = -I $(MLXPATH) -L $(MLXPATH) -lmlx -framework OpenGL -framework AppKit -W
 CFLAGS =  -I. -I$(LIBFTPATH) -Iinc -g3
 
 SRC_PATH = ./srcs/
-SRC_NAME = main.c init.c print.c key.c clean.c general.c mouse.c algorithm.c color.c
+SRC_NAME = main.c init.c print.c key.c clean.c general.c mouse.c algorithm.c color.c text.c choose_color.c
 SRC = $(addprefix $(SRC_PATH),$(SRC_NAME))
 
 OBJ = $(SRC:%.c=%.o)

@@ -6,7 +6,7 @@
 /*   By: dholiday <dholiday@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/13 13:53:13 by dholiday          #+#    #+#             */
-/*   Updated: 2020/03/13 19:26:21 by dholiday         ###   ########.fr       */
+/*   Updated: 2020/03/14 19:09:47 by dholiday         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,26 +34,26 @@ void		ft_cook(t_all *all)
 		test[i].all = all;
 		test[i].y = i * (HEIGHT / FLOW);
 		test[i].ye = (i + 1) * (HEIGHT / FLOW);
-		if (pthread_create(&tid[i],NULL, (void *(*)(void *))ft_test, (void *)&test[i]))
+		if (pthread_create(&tid[i], NULL, (void *)ft_test, (void *)&test[i]))
 			printf("a ");
 		i++;
 	}
 	while (i-- > 0)
 	{
-		if (pthread_join(tid[i],NULL))
+		if (pthread_join(tid[i], NULL))
 			printf("f ");
 	}
 	mlx_put_image_to_window(all->image->mlx_ptr, all->image->win_ptr,
 						all->image->img_ptr, 0, 0);
 }
 
-void ft_test(void *param)
+void		ft_test(void *param)
 {
 	t_complex	z;
 	t_complex	c;
 	int			y;
 	t_test		*test;
-	t_all *all;
+	t_all		*all;
 
 	test = (t_test*)param;
 	all = test->all;
